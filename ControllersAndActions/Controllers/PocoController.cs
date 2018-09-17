@@ -1,10 +1,18 @@
-﻿namespace ControllersAndActions.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
+namespace ControllersAndActions.Controllers
 {
     public class PocoController
     {
-        public string Index()
+        public ViewResult Index()
         {
-            return "This is a POCO controller";
+            return new ViewResult()
+            {
+                ViewName = "Result",
+                ViewData = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary()) { Model = $"This is a POCO controller" }
+            };
         }
     }
 }
